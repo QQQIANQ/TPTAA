@@ -38,17 +38,19 @@ public class AfficheUserInfo extends HttpServlet{
 
         System.out.println(userList.size());
 
-        out.append("<HTML>\n<BODY>\n" + "<H1> Recapitulatif des informations Users   </H1>\n"
-                    + "<UL>\n" + " <LI> User Total :  " + userList.size());
+        out.append("<HTML><BODY><H1> Recapitulatif des informations Users </H1>"
+                    +" User Total :  " + userList.size()+
+                    "<table border='1'><tr><th>ID</th><th>Name</th><th>Birthday</th></tr>" );
 
         for(User u : userList){
-            out.append("<LI> ID: " + u.getId()+"\n"
-            +"<LI> Nom: " + u.getName() +"\n"
-            +"<LI> BirthDate: " + u.getDateNaissance()+"\n");
+            out.append("<tr>"
+	            + "<td>" + u.getId()+"</td>"
+	            +"<td>" + u.getName() +"</td>"
+	            +"<td>" + u.getDateNaissance()+"</td>"
+            +"</tr>");
         }
 
-        out.append("</UL>\n" +
-                "</BODY></HTML>");
+        out.append("</table></BODY></HTML>");
 
         out.println();
 

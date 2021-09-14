@@ -28,12 +28,11 @@ public class UpdateUser extends HttpServlet {
 
 
         String name = request.getParameter("name");
-        request.getParameter("birthday");
         try {
             Date bd= new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthday"));
             User userToUpdate = new User(name,bd);
             UserDAO userDAO = new UserDAO();
-            userDAO.update(userToUpdate);
+            userDAO.save(userToUpdate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
