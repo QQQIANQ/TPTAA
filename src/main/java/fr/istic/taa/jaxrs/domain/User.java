@@ -1,44 +1,71 @@
 package fr.istic.taa.jaxrs.domain;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-@XmlRootElement(name = "User")
-public class User  {
+import javax.persistence.*;
 
-    private Long id;
-    private String name;
-    private Date dateNaissance; //'jj/mm/yyyy'
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@NamedQueries(
+		{@NamedQuery (name ="bestWorker",query = "select e from Worker as e where e.rate = " +
+				"(select max(e.rate) from User as e)"),
+			@NamedQuery(name ="allWorker", query = "select e from Worker as e"),
+		@NamedQuery(name ="allUser", query = "select e from User as e")}
+)
+public class User implements Serializable {
+	private Long id;
+	private String name;
+	private Date dateNaissance; //'jj/mm/yyyy'
 
-    @XmlElement(name = "id")
-    public Long getId() {
-        return id;
-    }
+	private List<Appointment> appointments;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public User() {}
+	
+	public User(String name){
+		this.name = name;
+	}
+	
+	public User(String name, Date dateNaissance) {
+		this.name=name;
+		this.dateNaissance=dateNaissance;
+	}
 
-    @XmlElement(name = "name")
-    public String getName() {
-        return name;
-    }
+	public Date getDateNaissance() {
+		return dateNaissance;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setDateNaissance(Date dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
 
-    @XmlElement(name = "birthday")
-    public Date getDateNaissance() {
-        return dateNaissance;
-    }
+	@Column(length=20)
+	public String getName() {
+		return name;
+	}
 
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
 
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@OneToMany(mappedBy="user")
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+
+	public void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
+	}
 }

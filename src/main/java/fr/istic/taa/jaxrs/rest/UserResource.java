@@ -8,13 +8,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import java.util.Date;
 
-@Path("/xml/user")
-@Produces({"application/json", "application/xml"})
+@Path("/user")
+@Produces({"application/json"})
 public class UserResource {
 
     @GET
     @Path("/get")
-    public User getUserInXml(){
+    public User getUser(){
 
          User user = new User();
          user.setName("george");
