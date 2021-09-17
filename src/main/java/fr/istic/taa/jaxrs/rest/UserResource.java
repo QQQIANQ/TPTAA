@@ -2,7 +2,6 @@ package fr.istic.taa.jaxrs.rest;
 
 
 import fr.istic.taa.jaxrs.dao.generic.UserDAO;
-import fr.istic.taa.jaxrs.domain.Pet;
 import fr.istic.taa.jaxrs.domain.User;
 import io.swagger.v3.oas.annotations.Parameter;
 
