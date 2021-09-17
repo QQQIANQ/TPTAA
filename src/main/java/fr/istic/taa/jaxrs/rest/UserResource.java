@@ -40,26 +40,39 @@ public class UserResource {
         return Response.ok().entity("SUCCESS").build();
     }
 
+/*
 
     @POST
-    @Path("/add/{name}")
-    public Response addUser(@PathParam("name") String name){
+    @Path("/add")
+    @Consumes({"application/json"})
+    public Response addUser(@PathParam("name") String name,@PathParam("birthday") Date birthday){
 
-        User user = new User();
-        user.setName(name);
+        User user = new User(name, birthday);
         UserDAO userDAO = new UserDAO();
         userDAO.save(user);
         return Response.ok().entity("SUCCESS").build();
     }
-
+*/
 
     @POST
+    @Path("/add")
     @Consumes("application/json")
     public Response addUser(
             @Parameter(description = "User object that needs to be added to the store", required
                     = true) User user) {
         UserDAO userDAO = new UserDAO();
         userDAO.save(user);
+        return Response.ok().entity("SUCCESS").build();
+    }
+
+    @POST
+    @Path("/update")
+    @Consumes("application/json")
+    public Response updateUser(
+            @Parameter(description = "User object that needs to be update to the store", required
+                    = true) User user) {
+        UserDAO userDAO = new UserDAO();
+        userDAO.update(user);
         return Response.ok().entity("SUCCESS").build();
     }
 }

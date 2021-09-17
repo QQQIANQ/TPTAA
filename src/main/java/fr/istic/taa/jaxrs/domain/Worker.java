@@ -24,7 +24,7 @@ public class Worker extends User {
 	}
 	
 	@ManyToOne//cardinalite cible puis celle du sujet
-	@JsonBackReference
+
 	public Job getJob() {
 		return job;
 	}

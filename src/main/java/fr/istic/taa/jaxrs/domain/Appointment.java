@@ -66,8 +66,7 @@ public class Appointment implements Serializable {
     }
 
     @ManyToOne
-    @JsonManagedReference
-    public Worker getWorker(){
+     public Worker getWorker(){
         return  this.worker;
     }
 
