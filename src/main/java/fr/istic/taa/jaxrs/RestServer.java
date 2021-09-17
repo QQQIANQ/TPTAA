@@ -18,6 +18,10 @@ public class RestServer {
 
     public static void main( String[] args ) {
 
+    	
+    	//peuplerBDD();
+    	
+    	
         UndertowJaxrsServer ut = new UndertowJaxrsServer();
 
         TestApplication ta = new TestApplication();
@@ -33,5 +37,19 @@ public class RestServer {
         logger.info("JAX-RS based micro-service running!");
 
 
+    }
+    
+    
+    public static void peuplerBDD() {
+    	User u1=new User("Bob", new Date(99999999L));
+    	User u2=new User("Georges",new Date(9999999999L));
+    	Job j1= new Job("plombier",2500);
+    	Worker w1= new Worker("Patrick",new Date(9999999999L),j1,15);
+    	UserDAO uDAO=new UserDAO();
+    	uDAO.save(u1);uDAO.save(u2);
+    	JobDao jDAO=new JobDao();
+    	jDAO.save(j1);
+    	WorkerDao wDAO=new WorkerDao();
+    	wDAO.save(w1);
     }
 }
