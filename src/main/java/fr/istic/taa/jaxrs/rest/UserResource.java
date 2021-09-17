@@ -33,11 +33,25 @@ public class UserResource {
      }
 
     @DELETE
-    public Response deleteUser(@QueryParam("name") String name)  {
+    @Path("/delete/{id}")
+    public Response deleteUser(@PathParam("id") Long id)  {
         UserDAO dao = new UserDAO();
-        dao.delete(dao.findByName(name));
+        dao.delete(dao.findOne(id));
         return Response.ok().entity("SUCCESS").build();
     }
+
+
+    @POST
+    @Path("/add/{name}")
+    public Response addUser(@PathParam("name") String name){
+
+        User user = new User();
+        user.setName(name);
+        UserDAO userDAO = new UserDAO();
+        userDAO.save(user);
+        return Response.ok().entity("SUCCESS").build();
+    }
+
 
     @POST
     @Consumes("application/json")
