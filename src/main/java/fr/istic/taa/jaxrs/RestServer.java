@@ -1,8 +1,11 @@
 package fr.istic.taa.jaxrs;
 
+import fr.istic.taa.jaxrs.dao.generic.*;
+import fr.istic.taa.jaxrs.domain.*;
 import io.undertow.Undertow;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 
+import java.sql.Date;
 import java.util.logging.Logger;
 
 /**
@@ -28,5 +31,7 @@ public class RestServer {
         );
 
         logger.info("JAX-RS based micro-service running!");
+
+
     }
 }

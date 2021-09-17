@@ -32,6 +32,7 @@ public class User implements Serializable {
 		this.dateNaissance=dateNaissance;
 	}
 
+
 	public Date getDateNaissance() {
 		return dateNaissance;
 	}
