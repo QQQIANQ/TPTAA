@@ -14,6 +14,7 @@ import javax.persistence.*;
 			@NamedQuery(name ="allWorker", query = "select e from Worker as e"),
 		@NamedQuery(name ="allUser", query = "select e from User as e")}
 )
+
 public class User implements Serializable {
 	private Long id;
 	private String name;
