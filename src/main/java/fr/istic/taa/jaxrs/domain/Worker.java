@@ -1,5 +1,8 @@
 package fr.istic.taa.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.sql.Date;
 
 import javax.persistence.*;
@@ -21,6 +24,7 @@ public class Worker extends User {
 	}
 	
 	@ManyToOne//cardinalite cible puis celle du sujet
+	@JsonBackReference
 	public Job getJob() {
 		return job;
 	}

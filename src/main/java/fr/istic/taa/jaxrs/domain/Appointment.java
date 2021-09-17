@@ -1,5 +1,8 @@
 package fr.istic.taa.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -63,11 +66,13 @@ public class Appointment implements Serializable {
     }
 
     @ManyToOne
+    @JsonManagedReference
     public Worker getWorker(){
         return  this.worker;
     }
 
     @ManyToOne
+    @JsonBackReference
     public User getUser() {
         return user;
     }

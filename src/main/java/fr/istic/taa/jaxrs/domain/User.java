@@ -1,5 +1,7 @@
 package fr.istic.taa.jaxrs.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -63,6 +65,7 @@ public class User implements Serializable {
 	}
 
 	@OneToMany(mappedBy="user")
+	@JsonManagedReference
 	public List<Appointment> getAppointments() {
 		return appointments;
 	}
