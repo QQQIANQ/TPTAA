@@ -26,11 +26,11 @@ public class UserResource {
      }
 
      @GET
-     @Path("/{name}")
+     @Path("/{id}")
      @Produces(MediaType.APPLICATION_JSON)
-     public User getUserByName(@PathParam("name") String name){
+     public User getUserById(@PathParam("id") Long id){
         UserDAO dao = new UserDAO();
-        return dao.findByName(name);
+        return dao.findOne(id);
      }
 
     @DELETE
