@@ -21,7 +21,7 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
-import fr.istic.taa.jaxrs.rest.UserResource;
+import fr.istic.taa.jaxrs.rest.*;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 
 public class TestApplication extends Application {
@@ -32,6 +32,10 @@ public class TestApplication extends Application {
 
         final Set<Class<?>> clazzes = new HashSet<Class<?>>();
 
+        clazzes.add(rootService.class);
+        clazzes.add(JobResource.class);
+        clazzes.add(WorkerResource.class);
+        clazzes.add(AppointmentResource.class);
         clazzes.add(OpenApiResource.class);
         clazzes.add(UserResource.class);
         
